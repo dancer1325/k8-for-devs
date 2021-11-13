@@ -1,19 +1,19 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 #Indicate the version of Kubernetes
+kind: Deployment #Type of resource for the Replica Controller
 metadata:
-  name: deployment
+  name: deployment #Name of the recourse
   labels:
     app: nginx
 spec:
-  replicas: 3
-  selector:
+  replicas: 3 #Specify a ReplicaSet in the deployment
+  selector: #Filter the pods by label. Independently the container in which they are
     matchLabels:
       app: nginx
-  template:
+  template: #Specify the pods in the deployment
     metadata:
       labels:
-        app: nginx
-    spec:
+        app: nginx #Label of the pod
+    spec: #Specify the recourses into the pod
       volumes:
       - name: shared-data
         emptyDir: {}

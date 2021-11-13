@@ -1,11 +1,11 @@
-kind: Service
-apiVersion: v1
+kind: Service #Type of resource 
+apiVersion: v1 #Indicate the version of Kubernetes
 metadata:
   name: service
 spec:
-  type: NodePort
+  type: NodePort #Indicate type of service
   selector:
-    app: nginx
+    app: nginx #Apply the services just to the pods with this label
   ports:
-  - port: 80
-    nodePort: 30080
+  - port: 80 #Source port
+    nodePort: 30080 #Target port

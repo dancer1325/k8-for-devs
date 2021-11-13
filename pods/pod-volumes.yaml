@@ -3,21 +3,22 @@ kind: Pod
 metadata:
   name: pod-volumes
 spec:
-  volumes:
+  volumes: #Define a volume into the pod
   - name: shared-data
-    emptyDir: {}
-  containers:
+    emptyDir: {} #Initialize the volume empty
+    #Since no more information specified --> Define a local empty volume
+  containers: #Define a container into the pod
   - name: nginx
     image: nginx:1.7.9
     ports:
     - containerPort: 80
     volumeMounts:
-    - name: shared-data
-      mountPath: /usr/share/nginx/html
+    - name: shared-data #Name of the volume
+      mountPath: /usr/share/nginx/html #Path in which builds the volume into this container
   - name: content
     image: alpine
     volumeMounts:
     - name: shared-data
-      mountPath: /pod-data
+      mountPath: /pod-data #Path in which builds the volume into this container
     command: ["/bin/sh"]
     args: ["-c", "echo Hola Openwebinars! > /pod-data/index.html && tail -f /dev/null"]

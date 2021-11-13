@@ -1,9 +1,10 @@
-apiVersion: v1
-kind: Pod
+apiVersion: v1 # Kubernetes version to use
+kind: Pod #Type of resource to create
 metadata:
-  name: pod
-spec:
-  containers:
+  name: pod # Name of the resource to create. It could be anything
+  # You can add also label / anotations
+spec: #Define the resources into the pod
+  containers: #Define a container into the pod
   - name: nginx
     image: nginx:1.7.9
     ports:

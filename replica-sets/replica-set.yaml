@@ -1,19 +1,22 @@
-apiVersion: apps/v1
-kind: ReplicaSet
+apiVersion: apps/v1 #Indicate the version of Kubernetes
+kind: ReplicaSet #Type of resource for the Replica Controller
 metadata:
-  name: replica-set
+  name: replica-set #They are unique by namespace
 spec:
-  replicas: 3
+  replicas: 3 #Number of replicas about the pod which match the criterias indicated in the selector
   selector:
-    matchLabels:
+    matchLabels: #Filter the pods by label. Independently the container in which they are
       app: nginx
-    matchExpressions:
-      - {key: app, operator: In, values: [nginx]}
-  template:
+    matchExpressions: #Filter the pods by expression. Independently the container in which they are
+      - {key: app, operator: In, values: [nginx]} 
+      #key. Filter by label
+      #operator. Operator to apply to the values
+      #values. Values of the key
+  template: #Definition of the pod in 
     metadata:
       name: nginx
       labels:
-        app: nginx
+        app: nginx #Label the pod. 
     spec:
       containers:
       - name: nginx
