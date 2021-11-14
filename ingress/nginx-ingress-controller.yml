@@ -1,9 +1,10 @@
+# File to deploy to have Ingress Controller in the cluster
 apiVersion: v1
-kind: Namespace
+kind: Namespace #Type of recourse to create
 metadata:
   name: ingress-nginx
 
----
+--- # To separate diferentes recourses to define
 
 kind: ConfigMap
 apiVersion: v1
@@ -26,7 +27,8 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+#apiVersion: rbac.authorization.k8s.io/v1beta1 -- Deprecated
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: nginx-ingress-clusterrole
@@ -82,7 +84,8 @@ rules:
       - update
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+#apiVersion: rbac.authorization.k8s.io/v1beta1 -- Deprecated
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: nginx-ingress-role
@@ -127,7 +130,8 @@ rules:
       - get
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+#apiVersion: rbac.authorization.k8s.io/v1beta1 -- Deprecated
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: nginx-ingress-role-nisa-binding
@@ -145,7 +149,8 @@ subjects:
     namespace: ingress-nginx
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+#apiVersion: rbac.authorization.k8s.io/v1beta1 -- Deprecated
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: nginx-ingress-clusterrole-nisa-binding
@@ -163,8 +168,9 @@ subjects:
 
 ---
 
-apiVersion: extensions/v1beta1
-kind: Deployment
+#apiVersion: extensions/v1beta1 -- Deprecated
+apiVersion: apps/v1 
+kind: Deployment # Recourse for the deployment of the Ingress Controller
 metadata:
   name: nginx-ingress-controller
   namespace: ingress-nginx

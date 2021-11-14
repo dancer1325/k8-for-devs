@@ -34,7 +34,7 @@ spec:
         args: ["-c", "echo Hola Openwebinars! > /pod-data/index.html && tail -f /dev/null"]
 ---
 apiVersion: v1
-kind: Service
+kind: Service #Service recourse
 metadata:
   name: hola
 spec:

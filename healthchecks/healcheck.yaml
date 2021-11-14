@@ -19,9 +19,9 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
-        livenessProbe:
-          httpGet:
+        livenessProbe: #LifelinessProbe
+          httpGet: #Make a request to the path "/" in the port 80
             path: /
             port: 80
-          initialDelaySeconds: 10
-          timeoutSeconds: 10
+          initialDelaySeconds: 10 #Once the pod is started, wait for 10" to make the first request
+          timeoutSeconds: 10 #Request is done each 10"

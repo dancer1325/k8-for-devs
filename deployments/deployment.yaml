@@ -1,5 +1,5 @@
 apiVersion: apps/v1 #Indicate the version of Kubernetes
-kind: Deployment #Type of resource for the Replica Controller
+kind: Deployment #Type of resource 
 metadata:
   name: deployment #Name of the recourse
   labels:

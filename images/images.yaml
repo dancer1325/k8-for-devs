@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 #Indicate the version of Kubernetes
+kind: Deployment #Type of resource 
 metadata:
   name: deployment
   labels:
@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: pchico83/nginx
+        image: pchico83/nginx #Private image pushed in the register
         ports:
         - containerPort: 80
-      imagePullSecrets:
-      - name: regpablo
+      imagePullSecrets: #Indicate the credentials to do the pull from docker registry
+      - name: regpablo #Name of the secret. Secret will be created directly in Kubernetes via CLI

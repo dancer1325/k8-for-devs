@@ -1,20 +1,31 @@
-apiVersion: extensions/v1beta1
-kind: Ingress
+#apiVersion: extensions/v1beta1 --- Doesn't work this version
+apiVersion: networking.k8s.io/v1
+kind: Ingress # Ingress recourse
 metadata:
   name: rules
 spec:
   rules:
-  - host: hola.openwebinars.com
+  - host: hola.openwebinars.com # Each type a request to this host --> Forward to the service "hola" in the port 80 and route "/"
     http:
       paths:
-      - path: /
+      - pathType: Prefix # Necessary field for this apiVersion
+        path: /
         backend:
-          serviceName: hola
-          servicePort: 80
-  - host: adios.openwebinars.com
+          #serviceName: hola -- Field not enabled for this apiVersion
+          #servicePort: 80 -- Field not enabled for this apiVersion
+          service:
+            name: hola
+            port:
+              number: 80
+  - host: adios.openwebinars.com # Each type a request to this host --> Forward to the service "adios" in the port 80 and route "/"
     http:
       paths:
-      - path: /
+      - pathType: Prefix # Necessary field for this apiVersion
+        path: /
         backend:
-          serviceName: adios
-          servicePort: 80
+          #serviceName: adios -- Field not enabled for this apiVersion
+          #servicePort: 80 -- Field not enabled for this apiVersion
+          service:
+            name: adios
+            port:
+              number: 80
