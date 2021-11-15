@@ -1,15 +1,16 @@
+# Configuration file to use Skaffold
 apiVersion: skaffold/v1alpha5
-kind: Config
+kind: Config #Type of recourse
 build:
   artifacts:
-  - image: pchico83/vote
-    context: vote
+  - image: pchico83/vote #Image which will build automatically
+    context: vote #Path of the project
     docker:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile #Indicate the name of the dockerfile
   tagPolicy:
-    sha256: {}
+    sha256: {} #Policy to generate the tags automatically
   local:
-    push: true
+    push: true #Indicate to push the image to the registry --> We assume that the image isn't uploaded to the cluster
 deploy:
   kubectl:
     manifests:

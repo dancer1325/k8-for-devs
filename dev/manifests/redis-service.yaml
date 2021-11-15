@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: redis
 spec:
-  type: ClusterIP
+  type: ClusterIP # Service in which is privated to the cluster
   ports:
   - port: 6379
     targetPort: 6379

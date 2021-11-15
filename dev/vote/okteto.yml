@@ -1,5 +1,5 @@
-name: vote
-workdir: /app
+name: vote #Indicate the deployment in which we want to code
+workdir: /app #Folder in the container of the pod in which sync the code 
 command: ["python", "app.py"]
-forward:
+forward: #Do the port forward of the pod
   - 8080:80

@@ -14,6 +14,6 @@ spec:
       labels:
         app: worker
     spec:
-      containers:
+      containers: #This container doesn't expose any API --> It hasn't got any service
       - image: dockersamples/examplevotingapp_worker
         name: worker
